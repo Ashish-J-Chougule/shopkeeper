@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+<div class="container">
+  <h1>Listing Categories</h1>
+
+  <table class="table" id="category" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Content</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.content %></td>
+        <td><%= link_to 'Show', category, class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), class: "btn btn-warning"  %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Category', new_category_path, class: "btn btn-success"   %>
+  <%= link_to 'Back', root_path, class: "btn btn-success"  %>
+  <%= link_to 'View Books', "/comics", class: "btn btn-warning"  %>
+  <%= javascript_include_tag '/javascripts/categories/categories.js' %>
+</div>

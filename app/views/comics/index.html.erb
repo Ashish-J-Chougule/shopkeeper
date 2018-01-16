@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+<div class="container">
+  <h1>Listing Books</h1>
+
+  <table id="comics" width="100%" cellspacing="0" class="table table-responsive">
+    <thead >
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Rating</th>
+        <th ></th>
+        <th ></th>
+        <th ></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @comics.each do |comic| %>
+      <tr>
+        <td><%= comic.title %></td>
+        <td><%= comic.author %></td>
+        <td><%= Category.find(comic.category_id).name if comic.category_id.present?%></td>
+        <td><%= comic.price %></td>
+        <td><%= comic.description %></td>
+        <td><%= comic.rating %></td>
+        <td><%= link_to 'Show', comic , class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_comic_path(comic), class: "btn btn-warning"  %></td>
+        <td><%= link_to 'Destroy', comic, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Book', new_comic_path, class: "btn btn-success"  %>
+  <%= link_to 'Back', root_path, class: "btn btn-success"  %>
+  <%= link_to 'View Categories', "/categories", class: "btn btn-warning"  %>
+  <%= javascript_include_tag '/javascripts/comics/comics.js' %>
+</div>

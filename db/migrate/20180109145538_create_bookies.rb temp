@@ -1,0 +1,13 @@
+class CreateBookies < ActiveRecord::Migration
+  def change
+    create_table :bookies do |t|
+      t.string :title
+      t.string :author
+      t.decimal :price
+      t.string :decimal#desciption
+      t.decimal :rating
+
+      t.timestamps null: false
+    end
+  end
+end

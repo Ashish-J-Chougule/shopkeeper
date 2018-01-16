@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Google Auth Example App</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <div class="pull-right">
+      <% if current_user %>
+      Signed in as <strong><%= current_user.name %></strong>!
+      <%= link_to "Sign out", signout_path, id: "sign_out", class: "btn btn-primary" %>
+      <% else %>
+      <h5> Welcome, please login to continue </h5>
+      <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class: "btn btn-success" %>
+      <% end %>
+    </div>
+
+    <div>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -24,7 +24,7 @@
       <tr>
         <td><%= comic.title %></td>
         <td><%= comic.author %></td>
-        <td><%= Category.find(comic.category_id).name if comic.category_id.present?%></td>
+        <td><%= Category.find(comic.category_id).name rescue nil%></td>
         <td><%= comic.price %></td>
         <td><%= comic.description %></td>
         <td><%= comic.rating %></td>
